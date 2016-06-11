@@ -1,0 +1,64 @@
+@import url(https://fonts.googleapis.com/css?family=Press+Start+2P);
+
+body {
+	margin: 0;
+	background-color: #4b6473;
+	background-image: url(assets/stars1.png), url(assets/stars2.png), url(assets/stars3.png);
+	animation: stars 16s linear infinite, fade 10s steps(5) 16s forwards;
+}
+
+img {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin: -184px 0 0 -64px;
+	animation: toast 6s ease infinite;
+}
+
+.dialog {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin: 24px 0 0 -300px;
+	width: 552px;
+	padding: 12px;
+	background-color: #fff;
+	border: solid 12px #000;
+	font: bold 22px/36px 'Press Start 2P', monospace;
+}
+
+.dialog div {
+	overflow: hidden;
+	white-space: nowrap;
+	width: 0;
+	animation: dialog 5s steps(24) forwards;
+}
+
+.dialog div:nth-child(1) {
+	animation-delay: 0s;
+}
+
+.dialog div:nth-child(2) {
+	animation-delay: 6s;
+}
+
+.dialog div:nth-child(3) {
+	animation-delay: 12s;
+}
+
+@keyframes toast {
+	50% { transform: translateY(64px); }
+	100% { transform: translateY(0); }
+}
+
+@keyframes dialog {
+	100% { width: 100%; }
+}
+
+@keyframes stars {
+	100% { background-position: -2048px 512px, -4096px 512px, -8192px 512px; }
+}
+
+@keyframes fade {
+	100% { background-color: #1d272d; }
+}
