@@ -1,10 +1,55 @@
 @import url(https://fonts.googleapis.com/css?family=Press+Start+2P);
 
+*, *::before, *::after {
+	box-sizing: border-box;
+}
+
 body {
 	margin: 0;
+	color: #fff;
 	background-color: #4b6473;
 	background-image: url(assets/stars1.png), url(assets/stars2.png), url(assets/stars3.png);
-	animation: stars 16s linear infinite, fade 10s steps(5) 16s forwards;
+	font: 32px 'Press Start 2P', monospace;
+	text-transform: uppercase;
+	//animation: stars 16s linear infinite, fade 10s steps(5) 16s forwards;
+}
+
+section {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+}
+
+.loading {
+	& > * {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+	}
+
+	.get-ready {
+	}
+
+	.start {
+		display: none;
+		margin: 0;
+		padding: 16px 32px;
+		border: 8px solid #fff;
+		border-radius: 0;
+		color: #fff;
+		background-color: #f89f1b;
+		font: inherit;
+		text-transform: inherit;
+		appearance: none;
+		cursor: pointer;
+	}
+}
+
+.playing {
+	display: none;
 }
 
 img {
@@ -24,7 +69,6 @@ img {
 	padding: 12px;
 	background-color: #fff;
 	border: solid 12px #000;
-	font: bold 22px/36px 'Press Start 2P', monospace;
 }
 
 .dialog div {
