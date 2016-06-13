@@ -21,22 +21,33 @@ body {
 	transform: translate(-50%, -50%);
 }
 
-.start {
+.splash {
 	display: none;
 	position: absolute;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
-	margin: 0;
-	padding: 16px 32px;
-	border: 8px solid #fff;
-	border-radius: 0;
-	color: #fff;
-	background-color: #f89f1b;
-	font: inherit;
-	text-transform: inherit;
-	appearance: none;
-	cursor: pointer;
+	width: 80%;
+	text-align: center;
+
+	h1 {
+		margin: 0 0 64px;
+		font-size: 96px;
+		line-height: 1.5;
+	}
+
+	.start {
+		margin: 0;
+		padding: 16px 32px;
+		border: 8px solid #fff;
+		border-radius: 0;
+		color: #fff;
+		background-color: #f89f1b;
+		font: inherit;
+		text-transform: inherit;
+		appearance: none;
+		cursor: pointer;
+	}
 }
 
 .toast {
@@ -45,7 +56,7 @@ body {
 	top: 50%;
 	left: 50%;
 	margin: -184px 0 0 -64px;
-	animation: toast-fade-in 8s steps(8), toast 6s ease infinite;
+	animation: toast-fade-in 4s steps(4), toast 6s ease infinite;
 }
 
 .dialog {
@@ -60,6 +71,7 @@ body {
 	color: #000;
 	background-color: #fff;
 	line-height: 2;
+	white-space: pre;
 	overflow: hidden;
 	animation: dialog-grow-in 1s linear,
 }

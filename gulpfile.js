@@ -8,7 +8,7 @@ var gulp = require('gulp'),
 // file paths
 var sources = {
 	'client': {
-		'static': ['./client/**/*.{gif,html,jpg,mp3,png}'],
+		'static': ['./client/**/*.{gif,html,jpg,mp3,png,wav}'],
 		'css': ['./client/**/*.scss'],
 		'js': ['./client/**/*.js']
 	},

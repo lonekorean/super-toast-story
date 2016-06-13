@@ -1,7 +1,10 @@
 $(function() {
-	var text1 = 'And so toast flew off into the stars. He never came back...';
+	var text1 = 'And so toast flew off\n' +
+				'into the stars.\n' +
+				'He never came back...';
 
 	var $getReady = $('.get-ready');
+	var $splash = $('.splash');
 	var $start = $('.start');
 	var $toast = $('.toast');
 	var $dialog = $('.dialog');
@@ -13,19 +16,21 @@ $(function() {
 		music.addEventListener('canplaythrough', handleReady, false);
 	}
 
+	var letter = document.getElementById('letter');
+
 	function handleReady() {
 		$getReady.hide();
-		$start.show();
+		$splash.show();
 
 		$start.on('click', handleStart);
 	}
 
 	function handleStart() {
-		$start.hide();
+		$splash.hide();
 		$toast.show();
 
 		music.play();
-		setTimeout(startDialog.bind(this, text1), 10000); // wait for toast fade in
+		setTimeout(startDialog.bind(this, text1), 6000); // wait for toast fade in
 	}
 
 	function startDialog(text) {
@@ -34,8 +39,14 @@ $(function() {
 	}
 
 	function continueDialog(text) {
-		$dialog.append(text.charAt(0));
-		var text = text.slice(1);
+		var char = text.charAt(0);
+		$dialog.append(char);
+
+		if (/\S/.test(char)) {
+			letter.play();
+		}
+
+		text = text.slice(1);
 		if (text.length > 0) {
 			setTimeout(continueDialog.bind(this, text), 250);
 		}
