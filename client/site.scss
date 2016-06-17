@@ -11,7 +11,20 @@ body {
 	background-image: url(assets/stars1.png), url(assets/stars2.png), url(assets/stars3.png);
 	font: 32px 'Press Start 2P', monospace;
 	text-transform: uppercase;
-	//animation: stars 16s linear infinite, fade 10s steps(5) 16s forwards;
+}
+
+.darken {
+	animation: darken 11.8s steps(8) forwards;
+}
+
+.fly-up {
+	background-position: 0 4096px, 0 8192px, 0 16384px;
+	transition: background-position 11.8s ease;
+}
+
+.fly-across {
+	background-color: #1d272d;
+	animation: stars 8s linear infinite;
 }
 
 .get-ready {
@@ -119,6 +132,6 @@ body {
 	100% { background-position: -2048px 512px, -4096px 512px, -8192px 512px; }
 }
 
-@keyframes fade {
+@keyframes darken {
 	100% { background-color: #1d272d; }
 }
