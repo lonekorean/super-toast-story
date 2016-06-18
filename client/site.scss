@@ -23,8 +23,10 @@ body {
 	color: #fff;
 	background-color: #4b6473;
 	background-image: url(assets/stars1.png), url(assets/stars2.png), url(assets/stars3.png);
+	background-position: 0 0, 0 0, 0 0; // firefox needs this
 	font: 2rem 'Press Start 2P', monospace;
 	text-transform: uppercase;
+	overflow: hidden;
 }
 
 .fly-up {
@@ -80,7 +82,7 @@ body {
 	top: 30%;
 	left: 50%;
 	margin: -64px 0 0 -64px;
-	animation: toast-fade-in 4s steps(4), toast-bob 6s ease infinite;
+	animation: fade-in 4s steps(5), toast-bob 6s ease infinite;
 }
 
 .dialog {
@@ -102,9 +104,19 @@ body {
 
 .the-end {
 	display: none;
+	position: absolute;
+	top: calc(75%);
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: calc(100% - 6rem);
+	margin: 0 0 2rem;
+	text-align: center;
+	font-size: 6rem;
+	line-height: 1.5;
+	animation: fade-in 4s steps(5);
 }
 
-@keyframes toast-fade-in {
+@keyframes fade-in {
 	0% { opacity: 0; }
 	100% { opacity: 1; }
 }
@@ -113,7 +125,6 @@ body {
 	0% { transform: scaleY(0); }
 	100% { transform: scaleY(1); }
 }
-
 
 @keyframes toast-bob {
 	50% { transform: translateY(4rem); }

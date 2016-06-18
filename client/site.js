@@ -5,8 +5,8 @@ $(function() {
 		toastFadeIn: 6 * 1000,
 		musicCrescendoStart: 27.5 * 1000,
 		musicCrescendoEnd: 39.3 * 1000,
-		toastFlyAcrossSome: 52 * 1000,
-		toastFlyAcrossSomeMore: 90 * 1000,
+		toastFlyAcrossSome: 46 * 1000,
+		toastFlyAcrossSomeMore: 72 * 1000,
 
 		// dialog
 		dialogStartDelay: 2 * 1000,
@@ -122,6 +122,6 @@ $(function() {
 	}
 
 	function showTheEnd() {
-
+		$theEnd.show();
 	}
 });
