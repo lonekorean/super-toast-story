@@ -1,4 +1,19 @@
 $(function() {
+	// timing
+	var waitFor = {
+		// story sequence
+		toastFadeIn: 6 * 1000,
+		musicCrescendoStart: 27.5 * 1000,
+		musicCrescendoEnd: 39.3 * 1000,
+		toastFlyAcrossSome: 52 * 1000,
+		toastFlyAcrossSomeMore: 90 * 1000,
+
+		// dialog
+		dialogStartDelay: 2 * 1000,
+		dialogContinueDelay: 0.25 * 1000,
+		dialogCloseDelay: 5 * 1000
+	};
+
 	// dialog text
 	var text1 = 'He did his best, but\n' +
 				'the world was not\n' +
@@ -6,9 +21,6 @@ $(function() {
 	var text2 = 'And so toast flew off\n' +
 				'into the stars. He\n' +
 				'never came back...';
-	var text3 = 'He put on a smile,\n' +
-				'but he missed his\n' +
-				'friends dearly.';
 
 	// cache jQuery wrappers
 	var $body = $('body');
@@ -17,6 +29,7 @@ $(function() {
 	var $start = $('.start');
 	var $toast = $('.toast');
 	var $dialog = $('.dialog');
+	var $theEnd = $('.the-end');
 	var $audio = $('audio');
 
 	// cache audio elements
@@ -26,6 +39,7 @@ $(function() {
 	// other vars
 	var preloadsRemaining;
 
+	// this kicks everything off
 	startPreloads();
 
 	function startPreloads() {
@@ -48,34 +62,33 @@ $(function() {
 
 	function checkPreloadsRemaining() {
 		if (preloadsRemaining === 0) {
-			handleReady();
+			showSplash();
 		}
 	}
 
-	function handleReady() {
+	function showSplash() {
 		$getReady.hide();
 		$splash.show();
-
-		$start.on('click', handleStart);
+		$start.on('click', startCutscene);
 	}
 
-	function handleStart() {
+	function startCutscene() {
 		$splash.hide();
 		$toast.show();
-
 		music.play();
-		setTimeout(startDialog.bind(this, text1), 6000); // wait for toast fade in
-		setTimeout(flyUp, 27500); // wait for music to change
-		setTimeout(flyAcross, 39300); // wait for fly up to finish
-		setTimeout(startDialog.bind(this, text2), 52000); // after flying for a bit
-		setTimeout(startDialog.bind(this, text3), 90000); // later
+
+		setTimeout(startDialog.bind(this, text1), waitFor.toastFadeIn);
+		setTimeout(toastFlyUp, waitFor.musicCrescendoStart);
+		setTimeout(toastFlyAcross, waitFor.musicCrescendoEnd);
+		setTimeout(startDialog.bind(this, text2), waitFor.toastFlyAcrossSome);
+		setTimeout(showTheEnd, waitFor.toastFlyAcrossSomeMore);
 	}
 
-	function flyUp() {
-		$body.addClass('darken fly-up');
+	function toastFlyUp() {
+		$body.addClass('fly-up');
 	}
 
-	function flyAcross() {
+	function toastFlyAcross() {
 		$body
 			.removeClass('fly-up')
 			.addClass('fly-across');
@@ -83,7 +96,7 @@ $(function() {
 
 	function startDialog(text) {
 		$dialog.show();
-		setTimeout(continueDialog.bind(this, text), 2000); // wait for dialog grow in
+		setTimeout(continueDialog.bind(this, text), waitFor.dialogStartDelay);
 	}
 
 	function continueDialog(text) {
@@ -96,9 +109,9 @@ $(function() {
 
 		text = text.slice(1);
 		if (text.length > 0) {
-			setTimeout(continueDialog.bind(this, text), 250);
+			setTimeout(continueDialog.bind(this, text), waitFor.dialogContinueDelay);
 		} else {
-			setTimeout(closeDialog, 5000);
+			setTimeout(closeDialog, waitFor.dialogCloseDelay);
 		}
 	}
 
@@ -106,5 +119,9 @@ $(function() {
 		$dialog
 			.hide()
 			.empty();
+	}
+
+	function showTheEnd() {
+
 	}
 });

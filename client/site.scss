@@ -13,18 +13,15 @@ body {
 	text-transform: uppercase;
 }
 
-.darken {
-	animation: darken 11.8s steps(8) forwards;
-}
-
 .fly-up {
 	background-position: 0 4096px, 0 8192px, 0 16384px;
 	transition: background-position 11.8s ease;
+	animation: space-darken 11.8s steps(8) forwards;
 }
 
 .fly-across {
 	background-color: #1d272d;
-	animation: stars 8s linear infinite;
+	animation: stars-fly-across 8s linear infinite;
 }
 
 .get-ready {
@@ -69,7 +66,7 @@ body {
 	top: 50%;
 	left: 50%;
 	margin: -184px 0 0 -64px;
-	animation: toast-fade-in 4s steps(4), toast 6s ease infinite;
+	animation: toast-fade-in 4s steps(4), toast-bob 6s ease infinite;
 }
 
 .dialog {
@@ -89,23 +86,8 @@ body {
 	animation: dialog-grow-in 1s linear,
 }
 
-.dialog div {
-	overflow: hidden;
-	white-space: nowrap;
-	width: 0;
-	animation: dialog 5s steps(24) forwards;
-}
-
-.dialog div:nth-child(1) {
-	animation-delay: 0s;
-}
-
-.dialog div:nth-child(2) {
-	animation-delay: 6s;
-}
-
-.dialog div:nth-child(3) {
-	animation-delay: 12s;
+.the-end {
+	display: none;
 }
 
 @keyframes toast-fade-in {
@@ -119,19 +101,15 @@ body {
 }
 
 
-@keyframes toast {
+@keyframes toast-bob {
 	50% { transform: translateY(64px); }
 	100% { transform: translateY(0); }
 }
 
-@keyframes dialog {
-	100% { width: 100%; }
-}
-
-@keyframes stars {
-	100% { background-position: -2048px 512px, -4096px 512px, -8192px 512px; }
-}
-
-@keyframes darken {
+@keyframes space-darken {
 	100% { background-color: #1d272d; }
+}
+
+@keyframes stars-fly-across {
+	100% { background-position: -2048px 512px, -4096px 512px, -8192px 512px; }
 }
