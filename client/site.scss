@@ -4,12 +4,26 @@
 	box-sizing: border-box;
 }
 
+html {
+	font-size: 6px;
+}
+
+@media only screen and (min-width: 640px) {
+	html { font-size: 10px; }
+}
+@media only screen and (min-width: 768px) {
+	html { font-size: 14px; }
+}
+@media only screen and (min-width: 832px) {
+	html { font-size: 16px; }
+}
+
 body {
 	margin: 0;
 	color: #fff;
 	background-color: #4b6473;
 	background-image: url(assets/stars1.png), url(assets/stars2.png), url(assets/stars3.png);
-	font: 32px 'Press Start 2P', monospace;
+	font: 2rem 'Press Start 2P', monospace;
 	text-transform: uppercase;
 }
 
@@ -37,19 +51,19 @@ body {
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
-	width: 80%;
+	width: calc(100% - 6rem);
 	text-align: center;
 
 	h1 {
-		margin: 0 0 64px;
-		font-size: 96px;
+		margin: 0 0 2rem;
+		font-size: 6rem;
 		line-height: 1.5;
 	}
 
 	.start {
 		margin: 0;
-		padding: 16px 32px;
-		border: 8px solid #fff;
+		padding: 1rem 2rem;
+		border: 0.5rem solid #fff;
 		border-radius: 0;
 		color: #fff;
 		background-color: #f89f1b;
@@ -63,21 +77,21 @@ body {
 .toast {
 	display: none;
 	position: absolute;
-	top: 50%;
+	top: 30%;
 	left: 50%;
-	margin: -184px 0 0 -64px;
+	margin: -64px 0 0 -64px;
 	animation: toast-fade-in 4s steps(4), toast-bob 6s ease infinite;
 }
 
 .dialog {
 	display: none;
 	position: absolute;
-	top: calc(75% - 136px);
-	left: calc(50% - 384px);
-	width: 768px;
-	height: 272px;
-	padding: 32px;
-	border: solid 8px #000;
+	top: calc(75% - 8.5rem);
+	left: calc(50% - 24rem);
+	width: 48rem;
+	height: 17rem;
+	padding: 2rem;
+	border: solid 0.5rem #000;
 	color: #000;
 	background-color: #fff;
 	line-height: 2;
@@ -102,7 +116,7 @@ body {
 
 
 @keyframes toast-bob {
-	50% { transform: translateY(64px); }
+	50% { transform: translateY(4rem); }
 	100% { transform: translateY(0); }
 }
 
