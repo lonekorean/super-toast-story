@@ -6,6 +6,9 @@ $(function() {
 	var text2 = 'And so toast flew off\n' +
 				'into the stars. He\n' +
 				'never came back...';
+	var text3 = 'He put on a smile,\n' +
+				'but he missed his\n' +
+				'friends dearly.';
 
 	// cache jQuery wrappers
 	var $body = $('body');
@@ -65,6 +68,7 @@ $(function() {
 		setTimeout(flyUp, 27500); // wait for music to change
 		setTimeout(flyAcross, 39300); // wait for fly up to finish
 		setTimeout(startDialog.bind(this, text2), 52000); // after flying for a bit
+		setTimeout(startDialog.bind(this, text3), 90000); // later
 	}
 
 	function flyUp() {
