@@ -73,6 +73,10 @@ body {
 		text-transform: inherit;
 		appearance: none;
 		cursor: pointer;
+
+		&:disabled {
+			visibility: hidden;
+		}
 	}
 }
 
@@ -82,7 +86,7 @@ body {
 	top: 30%;
 	left: 50%;
 	margin: -64px 0 0 -64px;
-	animation: fade-in 4s steps(5), toast-bob 6s ease infinite;
+	animation: fade-in 4s steps(4), toast-bob 6s ease infinite;
 }
 
 .dialog {
@@ -113,7 +117,7 @@ body {
 	text-align: center;
 	font-size: 6rem;
 	line-height: 1.5;
-	animation: fade-in 4s steps(5);
+	animation: fade-in 4s steps(4);
 }
 
 @keyframes fade-in {

@@ -2,6 +2,7 @@ $(function() {
 	// timing
 	var waitFor = {
 		// story sequence
+		playClickDelay: 1 * 1000,
 		toastFadeIn: 6 * 1000,
 		musicCrescendoStart: 27.5 * 1000,
 		musicCrescendoEnd: 39.3 * 1000,
@@ -34,6 +35,7 @@ $(function() {
 
 	// cache audio elements
 	var music = document.getElementById('music');
+	var play = document.getElementById('play');
 	var typing = document.getElementById('typing');
 
 	// other vars
@@ -69,10 +71,18 @@ $(function() {
 	function showSplash() {
 		$getReady.hide();
 		$splash.show();
-		$start.on('click', startCutscene);
+		$start.prop('disabled', false);
+		$start.on('click', start);
 	}
 
-	function startCutscene() {
+	function start() {
+		$start.prop('disabled', true);
+		play.play();
+
+		setTimeout(playCutscene, waitFor.playClickDelay);
+	}
+
+	function playCutscene() {
 		$splash.hide();
 		$toast.show();
 		music.play();
