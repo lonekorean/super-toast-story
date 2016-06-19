@@ -40,13 +40,21 @@ $(function() {
 
 	// other vars
 	var preloadsRemaining;
+	var isAudioEnabled;
 
 	// this kicks everything off
 	startPreloads();
 
 	function startPreloads() {
 		preloadsRemaining = 0;
-		$audio.each(addPreload);
+
+		// audio is a hassle on mobile, disabling until future Will decides to revisit
+		isAudioEnabled = !(/android|iphone|ipad|ipod/i).test(navigator.userAgent);
+		if (isAudioEnabled) {
+			$audio.each(addPreload);
+		}
+
+		// immediate check in case everything is cached or audio is disabled
 		checkPreloadsRemaining();
 	}
 
@@ -68,6 +76,12 @@ $(function() {
 		}
 	}
 
+	function playAudio(audio) {
+		if (isAudioEnabled) {
+			audio.play();
+		}
+	}
+
 	function showSplash() {
 		$getReady.hide();
 		$splash.show();
@@ -77,7 +91,7 @@ $(function() {
 
 	function start() {
 		$start.prop('disabled', true);
-		play.play();
+		playAudio(play);
 
 		setTimeout(playCutscene, waitFor.playClickDelay);
 	}
@@ -85,7 +99,7 @@ $(function() {
 	function playCutscene() {
 		$splash.hide();
 		$toast.show();
-		music.play();
+		playAudio(music);
 
 		setTimeout(startDialog.bind(this, text1), waitFor.toastFadeIn);
 		setTimeout(toastFlyUp, waitFor.musicCrescendoStart);
@@ -114,7 +128,7 @@ $(function() {
 		$dialog.append(char);
 
 		if (/\S/.test(char)) {
-			typing.play();
+			playAudio(typing);
 		}
 
 		text = text.slice(1);
