@@ -22,8 +22,8 @@ body {
 	margin: 0;
 	color: #fff;
 	background-color: #4b6473;
-	background-image: url(assets/stars1.png), url(assets/stars2.png), url(assets/stars3.png);
-	background-position: 0 0, 0 0, 0 0; // firefox needs this
+	background-image: url(images/stars1.png), url(images/stars2.png), url(images/stars3.png);
+	background-position: 0 0, 0 0, 0 0; /* firefox needs this */
 	font: 2rem 'Press Start 2P', monospace;
 	text-transform: uppercase;
 	overflow: hidden;
@@ -55,29 +55,31 @@ body {
 	transform: translate(-50%, -50%);
 	width: calc(100% - 6rem);
 	text-align: center;
+}
 
-	h1 {
-		margin: 0 0 2rem;
-		font-size: 6rem;
-		line-height: 1.5;
-	}
+.title {
+	margin: 0 0 2rem;
+	font-size: 6rem;
+	line-height: 1.5;
+}
 
-	.start {
-		margin: 0;
-		padding: 1rem 2rem;
-		border: 0.5rem solid #fff;
-		border-radius: 0;
-		color: #fff;
-		background-color: #f89f1b;
-		font: inherit;
-		text-transform: inherit;
-		appearance: none;
-		cursor: pointer;
+.start {
+	margin: 0;
+	padding: 1rem 2rem;
+	border: 0.5rem solid #fff;
+	border-radius: 0;
+	color: #fff;
+	background-color: #f89f1b;
+	font: inherit;
+	text-transform: inherit;
+	cursor: pointer;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+}
 
-		&:disabled {
-			visibility: hidden;
-		}
-	}
+.start:disabled {
+	visibility: hidden;
 }
 
 .toast {
@@ -103,7 +105,7 @@ body {
 	line-height: 2;
 	white-space: pre;
 	overflow: hidden;
-	animation: dialog-grow-in 1s linear,
+	animation: dialog-grow-in 1s linear;
 }
 
 .the-end {
